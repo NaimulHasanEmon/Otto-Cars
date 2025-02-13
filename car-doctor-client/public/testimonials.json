@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co.com/twWSBFz1/user1.jpg", 
+      "name": "Sarah Carter",
+      "job": "Car Enthusiast",
+      "opinion": "This car fixing site is amazing! They fixed my car quickly and at a reasonable price. The mechanics were very knowledgeable and took the time to explain everything to me. The facility was clean and well-organized, and they even provided a complimentary inspection. I was impressed by their attention to detail and commitment to customer satisfaction. Highly recommended!",
+      "no_of_star": 5
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co.com/6csxyh5m/user2.jpg",
+      "name": "Emily Davis", 
+      "job": "Business Owner",
+      "opinion": "I had a great experience with this service. The mechanics are professional, courteous and clearly experts in their field. They diagnosed the issue with my company vehicle quickly and had it fixed ahead of schedule. The pricing was transparent with no hidden fees, and the process was completely hassle-free. Their customer service is outstanding - they kept me updated throughout the repair process. Will definitely return and recommend to others!",
+      "no_of_star": 4
+    }
+  ]

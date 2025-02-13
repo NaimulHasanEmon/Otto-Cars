@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.ibb.co.com/Y7bFs25x/6.png",
+      "name": "Car Engine Plug",
+      "price": 79.99
+    },
+    {
+      "id": 2,
+      "image": "https://i.ibb.co.com/TDbBk5hj/3.png",
+      "name": "Car Air Filter",
+      "price": 26.69
+    },
+    {
+      "id": 3,
+      "image": "https://i.ibb.co.com/zVYQs2VX/1.png",
+      "name": "Cools Led Light",
+      "price": 39.99
+    },
+    {
+      "id": 4,
+      "image": "https://i.ibb.co.com/Y75SBBsF/2.png",
+      "name": "Car Brake",
+      "price": 49.99
+    },
+    {
+      "id": 5,
+      "image": "https://i.ibb.co.com/WQHRmt4/5.png",
+      "name": "Car Tyre",
+      "price": 139.95
+    },
+    {
+      "id": 6,
+      "image": "https://i.ibb.co.com/spXkhvMm/4.png",
+      "name": "Car Battery",
+      "price": 95.99
+    }
+  ]
