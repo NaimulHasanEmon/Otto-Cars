@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "name": "John Doe",
-    "designation": "Software Engineer",
+    "name": "Michael Anderson",
+    "designation": "Car Tyre Service",
     "image": "https://i.ibb.co.com/wZThqVpP/1.jpg"
   },
   {
     "id": 2,
-    "name": "Jane Smith",
+    "name": "David Thompson",
     "designation": "Product Manager",
     "image": "https://i.ibb.co.com/MDzdx4c0/3.jpg"
   },
   {
     "id": 3,
-    "name": "Alice Johnson",
-    "designation": "UI/UX Designer",
+    "name": "Christopher Wilson",
+    "designation": "Car Engine Service",
     "image": "https://i.ibb.co.com/GQH7gSqv/2.jpg"
   }
 ]

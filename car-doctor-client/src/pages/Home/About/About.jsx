@@ -3,29 +3,32 @@ import { FaLocationArrow } from "react-icons/fa";
 
 const About = () => {
   return (
-    <div className='py-16'>
-      <div className='container mx-auto flex flex-col md:flex-row gap-15 px-4'>
-        {/* Image */}
+    <div className='py-20'>
+      <div className='container mx-auto flex flex-col md:flex-row gap-16 px-4'>
+        {/* Image Section */}
         <div className='w-full md:w-1/2 relative'>
           <img
             src='https://i.ibb.co.com/1G88pbv4/person.jpg'
             alt='Person'
-            className='rounded-lg w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover'
+            className='rounded-lg w-full h-[300px] sm:h-[350px] md:h-[450px] lg:h-[500px] object-cover shadow-lg transition-transform duration-300 hover:scale-[1.02]'
           />
           <img
             src='https://i.ibb.co.com/mCHyf95s/parts.jpg'
             alt='Parts'
-            className='absolute hidden md:block -bottom-12 -right-8 w-[200px] md:w-[220px] lg:w-[250px] border-l-8 border-t-8 border-white rounded-lg shadow-lg'
+            className='absolute hidden md:block -bottom-12 -right-8 w-[200px] md:w-[250px] lg:w-[280px] border-l-8 border-t-8 border-white rounded-lg hover:shadow-xl transition-all duration-300'
           />
         </div>
 
-        {/* About Us Description */}
-        <div className='w-full md:w-1/2 space-y-5'>
-          <h3 className='text-xl font-bold text-red-500'>About Us</h3>
-          <h1 className='text-3xl md:text-5xl font-bold leading-tight'>
-            We are qualified & of experience in this field
-          </h1>
-          <div className='space-y-4 text-[#737373]'>
+        {/* About Us Content */}
+        <div className='w-full md:w-1/2 space-y-6'>
+          <div className='space-y-3'>
+            <h3 className='text-xl font-bold text-red-500 uppercase tracking-wider'>About Us</h3>
+            <h1 className='text-3xl md:text-5xl font-bold leading-tight text-gray-800'>
+              We are qualified & of experience in this field
+            </h1>
+          </div>
+
+          <div className='space-y-4 text-gray-600 leading-relaxed'>
             <p>
               We have been providing quality car services for over two decades. Our team of certified mechanics ensures your vehicle receives the best care possible.
             </p>
@@ -33,13 +36,27 @@ const About = () => {
               From routine maintenance to complex repairs, we handle everything with precision and care. Our state-of-the-art facility is equipped with the latest diagnostic tools and equipment.
             </p>
           </div>
-          <div className='pt-4'>
+
+          {/* Statistics Section */}
+          <div className='grid grid-cols-2 gap-6 py-6'>
+            <div className='space-y-2'>
+              <h3 className='text-4xl font-bold text-red-500'>20+</h3>
+              <p className='text-gray-600'>Years Experience</p>
+            </div>
+            <div className='space-y-2'>
+              <h3 className='text-4xl font-bold text-red-500'>100%</h3>
+              <p className='text-gray-600'>Client Satisfaction</p>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className='pt-6'>
             <Link
               to='/about'
-              className='inline-flex items-center gap-2 bg-red-500 text-white px-6 py-3 rounded hover:bg-[#E62A00] transition duration-300'
+              className='inline-flex items-center gap-3 bg-red-500 text-white px-8 py-4 rounded-lg hover:bg-[#E62A00] transition duration-300 transform hover:-translate-y-1 hover:shadow-lg group'
             >
-              <span>Get More Info</span>
-              <FaLocationArrow className='text-sm' />
+              <span className='font-semibold'>Discover More</span>
+              <FaLocationArrow className='text-sm transition-transform duration-300 group-hover:translate-x-1' />
             </Link>
           </div>
         </div>

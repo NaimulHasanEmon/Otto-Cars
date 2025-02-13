@@ -10,33 +10,55 @@ const CoreFeatures = () => {
   }, []);
 
   return (
-    <div className="my-8 md:my-12 lg:my-16">
-      {/* Core Features */}
-      <div className='text-center px-4 md:px-20 lg:px-80 flex flex-col gap-3 md:gap-5'>
-        <p className='text-lg md:text-xl font-bold text-red-500'>
+    <div className='my-8 md:my-12 lg:my-16 container mx-auto'>
+      {/* Core Features Header */}
+      <div className='text-center px-4 md:px-20 lg:px-80 flex flex-col gap-4 md:gap-6 mb-12'>
+        <p className='text-lg md:text-xl font-bold text-red-500 tracking-wider uppercase animate-fade-in'>
           Core Features
         </p>
-        <p className='text-2xl md:text-3xl lg:text-4xl font-bold'>Why Choose Us</p>
-        <p className='text-sm md:text-base lg:text-lg text-gray-500'>
-          The Majority Have Suffered Alteration In Some Form, By Injected
-          Humour, Or Randomized Words Which Don&apos;t Look Even Slightly
-          Believable.
+        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-gray-800 to-black bg-clip-text text-transparent'>
+          Why Choose Us
+        </h2>
+        <p className='text-sm md:text-base lg:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed'>
+          We pride ourselves on delivering exceptional service with cutting-edge
+          technology and experienced professionals to ensure your vehicle
+          receives the best care possible.
         </p>
       </div>
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 px-4 md:px-8 lg:px-12 my-5'>
+
+      {/* Features Grid */}
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 px-4 md:px-8 lg:px-12 my-5'>
         {features.map((feature) => (
           <div
             key={feature.id}
             className={`${
-              feature.id === 2 && "bg-red-500 border-none text-white"
-            } p-3 md:p-4 lg:p-5 rounded-lg border border-gray-200 flex flex-col gap-2 md:gap-3 justify-center items-center`}
+              feature.id === 2
+                ? "bg-red-500 border-none text-white shadow-red-200 hover:text-black"
+                : "bg-white hover:bg-gray-50"
+            } p-5 md:p-6 lg:p-7 rounded-xl border border-gray-200 flex flex-col gap-3 md:gap-4 
+            justify-center items-center transform hover:scale-105 transition-all duration-300 
+            cursor-pointer hover:shadow-xl group relative overflow-hidden`}
           >
-            <img 
-              src={feature.image} 
-              alt={feature.name}
-              className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 object-contain" 
+            <div
+              className='absolute inset-0 bg-gradient-to-r from-red-500/10 to-transparent 
+              opacity-0 group-hover:opacity-100 transition-opacity duration-300'
             />
-            <p className='text-center text-sm md:text-base lg:text-xl font-bold'>{feature.name}</p>
+
+            <img
+              src={feature.image}
+              alt={feature.name}
+              className='w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain 
+              group-hover:rotate-6 transition-transform duration-300'
+            />
+            <p
+              className={`text-center text-sm md:text-base lg:text-lg font-bold transition-colors duration-300 ${
+                feature.id === 2 
+                  ? "text-white group-hover:text-black" 
+                  : "group-hover:text-red-500"
+              }`}
+            >
+              {feature.name}
+            </p>
           </div>
         ))}
       </div>
