@@ -45,7 +45,7 @@ const Banner = () => {
   };
 
   return (
-    <div className='flex flex-col relative mt-20'>
+    <div className='flex flex-col relative'>
       <div className='relative overflow-hidden rounded-xl sm:rounded-2xl'>
         <div
           className='flex transition-transform duration-700 ease-in-out h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] 2xl:h-[700px]'
