@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { FaQuoteRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+      easing: 'ease-out',
+    });
+
     fetch("testimonials.json")
       .then((res) => res.json())
       .then((data) => setTestimonials(data));
@@ -13,23 +21,27 @@ const Testimonial = () => {
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
-      {/* Section Header */}
-      <div className='text-center space-y-5 max-w-4xl mx-auto mb-12 md:mb-16'>
-        <p className='text-lg md:text-xl font-bold text-red-500 uppercase tracking-wider'>
-          Testimonial
-        </p>
-        <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800'>
-          What Our Customers Say
-        </h2>
-        <p className='text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed'>
-          Discover why our customers trust us with their vehicles. Read genuine feedback from our valued clients about their experience with our services.
-        </p>
+      <div data-aos="fade-up">
+        {/* Section Header */}
+        <div className='text-center space-y-5 max-w-4xl mx-auto mb-12 md:mb-16'>
+          <p className='text-lg md:text-xl font-bold text-red-500 uppercase tracking-wider'>
+            Testimonial
+          </p>
+          <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800'>
+            What Our Customers Say
+          </h2>
+          <p className='text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed'>
+            Discover why our customers trust us with their vehicles. Read genuine feedback from our valued clients about their experience with our services.
+          </p>
+        </div>
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10'>
-        {testimonials.map((testimonial) => (
+        {testimonials.map((testimonial, index) => (
           <div
             key={testimonial.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
             className='border border-gray-200 rounded-xl p-6 md:p-8 flex flex-col space-y-6 
                      hover:shadow-lg transition-all duration-300 hover:border-red-200
                      bg-white hover:bg-gray-50'

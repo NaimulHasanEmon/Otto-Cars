@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { LuCalendarClock } from "react-icons/lu";
-import { MdPermPhoneMsg } from "react-icons/md";
-import { MdLocationPin } from "react-icons/md";
+import { MdPermPhoneMsg, MdLocationPin } from "react-icons/md";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const BlackBox = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+      easing: 'ease-out',
+    });
+  }, []);
+
   return (
-    <div className='bg-neutral-900 text-white py-20 my-12 rounded-3xl px-4 md:px-8 shadow-2xl'>
+    <div className='bg-neutral-900 text-white py-20 my-12 rounded-3xl px-4 md:px-8 shadow-2xl' data-aos="fade-up">
       <div className='container mx-auto flex flex-col md:flex-row justify-evenly md:items-center gap-10 md:gap-4'>
         {/* Business Hours */}
         <div className='flex items-center gap-6 border-b-2 border-red-500 pb-6 md:border-b-0 md:pr-12 

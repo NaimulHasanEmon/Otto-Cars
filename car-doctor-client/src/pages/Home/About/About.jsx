@@ -1,12 +1,23 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaLocationArrow } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const About = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+      easing: 'ease-out',
+    });
+  }, []);
+
   return (
     <div className='py-20'>
       <div className='container mx-auto flex flex-col md:flex-row gap-16 px-4'>
         {/* Image Section */}
-        <div className='w-full md:w-1/2 relative'>
+        <div className='w-full md:w-1/2 relative' data-aos="fade-right">
           <img
             src='https://i.ibb.co.com/1G88pbv4/person.jpg'
             alt='Person'
@@ -20,7 +31,7 @@ const About = () => {
         </div>
 
         {/* About Us Content */}
-        <div className='w-full md:w-1/2 space-y-6'>
+        <div className='w-full md:w-1/2 space-y-6' data-aos="fade-left">
           <div className='space-y-3'>
             <h3 className='text-xl font-bold text-red-500 uppercase tracking-wider'>About Us</h3>
             <h1 className='text-3xl md:text-5xl font-bold leading-tight text-gray-800'>

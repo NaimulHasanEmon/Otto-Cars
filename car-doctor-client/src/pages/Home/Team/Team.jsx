@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Team = () => {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+      easing: 'ease-out',
+    });
+
     fetch("team.json")
       .then((res) => res.json())
       .then((data) => setTeam(data));
@@ -11,22 +19,26 @@ const Team = () => {
 
   return (
     <div className='my-16 container mx-auto'>
-      {/* Team Header */}
-      <div className='text-center px-4 md:px-20 lg:px-80 flex flex-col gap-4 mb-12'>
-        <h3 className='text-lg md:text-xl font-bold text-red-500 uppercase tracking-wider'>Our Team</h3>
-        <h2 className='text-3xl md:text-5xl font-bold text-slate-800'>Meet Our Experts</h2>
-        <p className='text-base md:text-lg text-gray-600 max-w-2xl mx-auto'>
-          The Majority Have Suffered Alteration In Some Form, By Injected
-          Humour, Or Randomized Words Which Don&apos;t Look Even Slightly
-          Believable.
-        </p>
+      <div data-aos="fade-up">
+        {/* Team Header */}
+        <div className='text-center px-4 md:px-20 lg:px-80 flex flex-col gap-4 mb-12'>
+          <h3 className='text-lg md:text-xl font-bold text-red-500 uppercase tracking-wider'>Our Team</h3>
+          <h2 className='text-3xl md:text-5xl font-bold text-slate-800'>Meet Our Experts</h2>
+          <p className='text-base md:text-lg text-gray-600 max-w-2xl mx-auto'>
+            The Majority Have Suffered Alteration In Some Form, By Injected
+            Humour, Or Randomized Words Which Don&apos;t Look Even Slightly
+            Believable.
+          </p>
+        </div>
       </div>
 
       {/* Team Grid */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8 lg:px-12'>
-        {team.map((member) => (
+        {team.map((member, index) => (
           <div
             key={member.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
             className='group bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden'
           >
             <div className='relative'>

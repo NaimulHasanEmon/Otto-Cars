@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa6";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const PopularProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+      duration: 500,
+      once: true,
+      easing: 'ease-out',
+    });
+
     fetch("popularProducts.json")
       .then((res) => res.json())
       .then((data) => setProducts(data));
@@ -13,7 +21,7 @@ const PopularProducts = () => {
 
   return (
     <div className='my-16'>
-      <div>
+      <div data-aos="fade-up">
         {/* Products Header */}
         <div className='text-center px-4 md:px-20 lg:px-80 flex flex-col gap-4 md:gap-6 mb-12'>
           <p className='text-lg md:text-xl font-bold text-red-500 uppercase tracking-wider'>Popular Products</p>
@@ -27,9 +35,11 @@ const PopularProducts = () => {
 
       {/* Products Grid */}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-8 lg:px-16'>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <div
             key={product.id}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
             className='bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group'
           >
             <div className='relative'>
