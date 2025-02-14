@@ -1,19 +1,18 @@
 import loginIcon from "../../assets/login.svg";
 import { Link } from "react-router-dom";
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
-const SignUp = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleSignUp = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(email, password);
   };
 
   return (
@@ -23,7 +22,7 @@ const SignUp = () => {
         <div className='hidden md:block w-1/2 bg-red-50'>
           <img
             src={loginIcon}
-            className='w-full object-cover p-12 transform hover:scale-105 transition-transform duration-300'
+            className='w-full h-full object-cover p-12 transform hover:scale-105 transition-transform duration-300'
             alt='login illustration'
           />
         </div>
@@ -33,30 +32,12 @@ const SignUp = () => {
           <div className='max-w-md mx-auto'>
             <div className='text-center mb-10'>
               <h2 className='text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600'>
-                Create Account
+                Welcome Back
               </h2>
-              <p className='text-gray-600 text-lg'>Join our community of car enthusiasts</p>
+              <p className='text-gray-600 text-lg'>Sign in to your account</p>
             </div>
 
-            <form onSubmit={handleSignUp} className='space-y-6'>
-              <div className='group'>
-                <label className='block text-sm font-semibold text-gray-700 mb-2 transition-all duration-200 group-hover:text-red-500'>
-                  Full Name
-                </label>
-                <div className='relative'>
-                  <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
-                    <FaUser className='h-5 w-5 text-gray-400 group-hover:text-red-500' />
-                  </div>
-                  <input
-                    type='text'
-                    name='name'
-                    placeholder='John Doe'
-                    className='w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-300'
-                    required
-                  />
-                </div>
-              </div>
-
+            <form onSubmit={handleLogin} className='space-y-6'>
               <div className='group'>
                 <label className='block text-sm font-semibold text-gray-700 mb-2 transition-all duration-200 group-hover:text-red-500'>
                   Email Address
@@ -84,7 +65,7 @@ const SignUp = () => {
                     <FaLock className='h-5 w-5 text-gray-400 group-hover:text-red-500' />
                   </div>
                   <input
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     name='password'
                     placeholder='••••••••'
                     className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-300'
@@ -102,10 +83,28 @@ const SignUp = () => {
                     )}
                   </button>
                 </div>
-                <p className='mt-2 text-sm text-gray-500 flex items-center gap-1'>
-                  <span className='text-red-500'>•</span> At least 8 characters
-                  <span className='text-red-500 ml-2'>•</span> Include numbers & symbols
-                </p>
+              </div>
+
+              <div className='flex items-center justify-between'>
+                <div className='flex items-center'>
+                  <input
+                    type='checkbox'
+                    id='remember'
+                    className='h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300 rounded'
+                  />
+                  <label
+                    htmlFor='remember'
+                    className='ml-2 block text-sm text-gray-700'
+                  >
+                    Remember me
+                  </label>
+                </div>
+                <Link
+                  to='/forgot-password'
+                  className='text-sm font-medium text-red-500 hover:text-red-600 hover:underline'
+                >
+                  Forgot password?
+                </Link>
               </div>
 
               <button
@@ -114,8 +113,14 @@ const SignUp = () => {
                 onMouseLeave={() => setIsHovered(false)}
                 className='relative w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transform transition-all duration-300 hover:scale-[1.02] overflow-hidden group'
               >
-                <span className='relative z-10 font-semibold text-lg'>Create Account</span>
-                <div className={`absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 transform transition-transform duration-300 ${isHovered ? 'translate-x-0' : '-translate-x-full'}`}></div>
+                <span className='relative z-10 font-semibold text-lg'>
+                  Sign In
+                </span>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 transform transition-transform duration-300 ${
+                    isHovered ? "translate-x-0" : "-translate-x-full"
+                  }`}
+                ></div>
               </button>
             </form>
 
@@ -125,7 +130,9 @@ const SignUp = () => {
                   <div className='w-full border-t border-gray-200'></div>
                 </div>
                 <div className='relative flex justify-center text-sm'>
-                  <span className='px-4 bg-gradient-to-b from-white to-gray-50 text-gray-500'>Or continue with</span>
+                  <span className='px-4 bg-gradient-to-b from-white to-gray-50 text-gray-500'>
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
@@ -173,7 +180,7 @@ const SignUp = () => {
                     xmlns='http://www.w3.org/2000/svg'
                     x='0px'
                     y='0px'
-                    height='40'
+                    height='37'
                     viewBox='0 0 48 48'
                   >
                     <path
@@ -198,12 +205,12 @@ const SignUp = () => {
             </div>
 
             <p className='mt-8 text-center text-sm text-gray-600'>
-              Already have an account?{' '}
-              <Link 
-                to='/login' 
+              Don&apos;t have an account?{" "}
+              <Link
+                to='/signup'
                 className='font-medium text-red-500 hover:text-red-600 transition-colors hover:underline'
               >
-                Sign in instead
+                Create an account
               </Link>
             </p>
           </div>
@@ -213,4 +220,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Login;
