@@ -1,22 +1,50 @@
 import loginIcon from "../../assets/login.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { logIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    const user = { email, password };
+    console.log(user);
+
+    logIn(email, password)
+      .then((res) => {
+        const user = res.user;
+        if (user) {
+          Swal.fire({
+            title: "Login Successfully",
+            text: "Find your car service",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              form.reset();
+              navigate("/");
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-red-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+    <div className='bg-gradient-to-br from-red-50 to-gray-100 flex items-center justify-center py-5 md:py-12 px-4 sm:px-6 lg:px-8'>
       <div className='flex w-full max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:shadow-3xl'>
         {/* Left side - Image */}
         <div className='hidden md:block w-1/2 bg-red-50'>
@@ -114,7 +142,7 @@ const Login = () => {
                 className='relative w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transform transition-all duration-300 hover:scale-[1.02] overflow-hidden group'
               >
                 <span className='relative z-10 font-semibold text-lg'>
-                  Sign In
+                  Log In
                 </span>
                 <div
                   className={`absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 transform transition-transform duration-300 ${

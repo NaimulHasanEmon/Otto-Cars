@@ -105,7 +105,7 @@ const Banner = () => {
         </div>
 
         {/* Slide Indicators - simple bottom positioning */}
-        <div className='absolute bottom-2 sm:left-0 right-2 sm:bottom-5 sm:right-0 flex justify-center gap-3 z-100'>
+        <div className='absolute bottom-2 sm:left-0 right-2 sm:bottom-5 sm:right-0 flex justify-center gap-3 z-10'>
           {slideData.map((_, idx) => (
             <button
               key={idx}

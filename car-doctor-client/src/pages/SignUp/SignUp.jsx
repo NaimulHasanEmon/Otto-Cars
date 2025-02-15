@@ -1,11 +1,17 @@
 import loginIcon from "../../assets/login.svg";
-import { Link } from "react-router-dom";
-import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -13,11 +19,33 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const user = { name, email, password };
+    console.log(user);
+
+    createUser(email, password)
+      .then((res) => {
+        const user = res.user;
+        if (user) {
+          Swal.fire({
+            title: "Account Created Successfully",
+            text: "Find your car service",
+            icon: "success",
+            confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              form.reset();
+              navigate("/");
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-br from-red-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8'>
+    <div className='bg-gradient-to-br from-red-50 to-gray-100 flex items-center justify-center py-5 md:py-12 px-4 sm:px-6 lg:px-8'>
       <div className='flex w-full max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:shadow-3xl'>
         {/* Left side - Image */}
         <div className='hidden md:block w-1/2 bg-red-50'>
@@ -35,7 +63,9 @@ const SignUp = () => {
               <h2 className='text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-red-600'>
                 Create Account
               </h2>
-              <p className='text-gray-600 text-lg'>Join our community of car enthusiasts</p>
+              <p className='text-gray-600 text-lg'>
+                Join our community of car enthusiasts
+              </p>
             </div>
 
             <form onSubmit={handleSignUp} className='space-y-6'>
@@ -84,7 +114,7 @@ const SignUp = () => {
                     <FaLock className='h-5 w-5 text-gray-400 group-hover:text-red-500' />
                   </div>
                   <input
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     name='password'
                     placeholder='••••••••'
                     className='w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 hover:border-red-300'
@@ -104,7 +134,8 @@ const SignUp = () => {
                 </div>
                 <p className='mt-2 text-sm text-gray-500 flex items-center gap-1'>
                   <span className='text-red-500'>•</span> At least 8 characters
-                  <span className='text-red-500 ml-2'>•</span> Include numbers & symbols
+                  <span className='text-red-500 ml-2'>•</span> Include numbers &
+                  symbols
                 </p>
               </div>
 
@@ -114,8 +145,14 @@ const SignUp = () => {
                 onMouseLeave={() => setIsHovered(false)}
                 className='relative w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transform transition-all duration-300 hover:scale-[1.02] overflow-hidden group'
               >
-                <span className='relative z-10 font-semibold text-lg'>Create Account</span>
-                <div className={`absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 transform transition-transform duration-300 ${isHovered ? 'translate-x-0' : '-translate-x-full'}`}></div>
+                <span className='relative z-10 font-semibold text-lg'>
+                  Create Account
+                </span>
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r from-red-600 to-red-700 transform transition-transform duration-300 ${
+                    isHovered ? "translate-x-0" : "-translate-x-full"
+                  }`}
+                ></div>
               </button>
             </form>
 
@@ -125,7 +162,9 @@ const SignUp = () => {
                   <div className='w-full border-t border-gray-200'></div>
                 </div>
                 <div className='relative flex justify-center text-sm'>
-                  <span className='px-4 bg-gradient-to-b from-white to-gray-50 text-gray-500'>Or continue with</span>
+                  <span className='px-4 bg-gradient-to-b from-white to-gray-50 text-gray-500'>
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
@@ -198,9 +237,9 @@ const SignUp = () => {
             </div>
 
             <p className='mt-8 text-center text-sm text-gray-600'>
-              Already have an account?{' '}
-              <Link 
-                to='/login' 
+              Already have an account?{" "}
+              <Link
+                to='/login'
                 className='font-medium text-red-500 hover:text-red-600 transition-colors hover:underline'
               >
                 Sign in instead
