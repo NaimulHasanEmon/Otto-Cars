@@ -8,7 +8,7 @@ import { useState } from "react";
 const CheckOut = () => {
   const [isHovered, setIsHovered] = useState(false);
   const data = useLoaderData();
-  const { title, price } = data;
+  const { title } = data;
   const image = "https://i.ibb.co.com/svSvWRYb/4.jpg";
 
   const handleLogin = (e) => {
