@@ -14,7 +14,7 @@ const Services = () => {
       easing: 'ease-out',
     });
 
-    fetch("services.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -66,7 +66,7 @@ const Services = () => {
                   <p className='text-sm text-gray-500'>Starting from</p>
                 </div>
                 <Link 
-                  to={`/service/${service._id}`} 
+                  to={`/checkout/${service._id}`} 
                   className='p-3 rounded-full bg-red-50 hover:bg-red-500 group transition-all duration-300'
                 >
                   <FaLocationArrow className='text-xl text-red-500 group-hover:text-white transform rotate-45' />
