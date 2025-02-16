@@ -78,19 +78,21 @@ const NavBar = () => {
         title: "Book Appointment",
         text: "Appointment",
         className:
-          "px-6 py-2.5 text-red-600 hover:text-white hover:bg-red-600 transition-all duration-300 border-2 border-red-500 rounded-full font-semibold",
+          "px-2 lg:px-6 py-2.5 text-red-600 hover:text-white hover:bg-red-600 transition-all duration-300 border-2 border-red-500 rounded-full font-semibold",
       },
       {
         to: "/login",
-        title: user ? "Logout" : "Login to Account", 
+        title: user ? "Logout" : "Login to Account",
         text: user ? "Logout" : "Login",
-        onClick: user ? () => {
-          logOut()
-            .then(() => {
-              navigate('/login');
-            })
-            .catch(err => console.log(err));
-        } : null,
+        onClick: user
+          ? () => {
+              logOut()
+                .then(() => {
+                  navigate("/login");
+                })
+                .catch((err) => console.log(err));
+            }
+          : null,
         className:
           "px-6 py-2.5 bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 transition-all duration-300 hover:shadow-lg",
       },
@@ -150,10 +152,10 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className='fixed w-full top-0 z-[100]'>
-        <div className='backdrop-blur-md bg-white/90 shadow-lg'>
-          <div className='container mx-auto px-4 md:px-6 max-w-[1200px]'>
-            <div className='flex justify-between items-center h-20'>
+      <nav className='fixed top-0 z-[100] w-full'>
+        <div className='backdrop-blur-md bg-white/90 mx-2 sm:mx-4 md:mx-6 lg:mx-30 rounded-b-2xl shadow-lg'>
+          <div className='container mx-auto px-5 max-w-7xl'>
+            <div className='flex justify-between h-20'>
               {/* Logo */}
               <Link
                 to='/'
@@ -163,12 +165,12 @@ const NavBar = () => {
                 <img
                   src={logo}
                   alt='Car Doctor Logo'
-                  className='h-10 sm:h-12 md:h-14 lg:h-16'
+                  className='h-10 sm:h-12 mt-4 md:mt-2 md:h-14 lg:h-16'
                 />
               </Link>
 
               {/* Navigation Links */}
-              <div className='hidden md:flex items-center space-x-3 lg:space-x-8 mr-2'>
+              <div className='hidden md:flex items-center space-x-2 lg:space-x-8 mr-1 lg:mr-2'>
                 {navLinks.map((link) => (
                   <Link
                     key={link.to}
@@ -185,14 +187,14 @@ const NavBar = () => {
               </div>
 
               {/* Right side buttons */}
-              <div className='hidden md:flex items-center space-x-3 lg:space-x-4'>
+              <div className='hidden md:flex items-center space-x-1 lg:space-x-4'>
                 {renderIconButton(commonElements.search)}
                 {renderIconButton(commonElements.cart)}
                 {commonElements.cta.map(renderCtaButton)}
               </div>
 
               {/* Mobile menu button */}
-              <button className='md:hidden p-2' onClick={() => setIsOpen(true)}>
+              <button className='md:hidden p-3' onClick={() => setIsOpen(true)}>
                 <svg
                   className='h-6 w-6'
                   fill='none'
@@ -214,8 +216,7 @@ const NavBar = () => {
           className={`
                         md:hidden fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50
                         transform transition-transform duration-500 ease-in-out
-                        ${isOpen ? "translate-x-0" : "translate-x-full"}
-                    `}
+                        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
         >
           {/* Close Button */}
           <button

@@ -1,15 +1,18 @@
 import { useLoaderData } from "react-router-dom";
 import { FaEnvelope, FaUser, FaPhoneAlt } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// window.scrollTo({ top: 0, behavior: "smooth" });
 
 const CheckOut = () => {
   const [isHovered, setIsHovered] = useState(false);
   const data = useLoaderData();
   const { title } = data;
   const image = "https://i.ibb.co.com/svSvWRYb/4.jpg";
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();

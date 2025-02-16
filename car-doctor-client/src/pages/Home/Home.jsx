@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import BlackBox from "./BlackBox/BlackBox";
@@ -8,6 +9,14 @@ import Team from "./Team/Team";
 import Testimonial from "./Testimonial/Testimonial";
 
 const Home = () => {
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
+    
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div>
       <Banner></Banner>

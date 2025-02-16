@@ -4,7 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import Error from "../pages/Error/Error";
-import CheckOut from "../pages/Home/CheckOut/CheckOut";
+import CheckOut from "../pages/CheckOut/CheckOut";
 
 const router = createBrowserRouter([
   {
